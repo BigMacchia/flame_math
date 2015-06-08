@@ -43,3 +43,37 @@ print v2
 
 print v1+v2
 
+import matrix
+reload(matrix)
+
+m = matrix.Matrix44()
+print m
+m.reset_to_value(5)
+print m 
+m.zero()
+print m
+
+from itertools import izip
+it = matrix.ColumnIterator(m)
+
+for i,c in enumerate(it):
+    c[i] = 1
+    it.merge(i,c)
+
+print m
+
+m.reset_to_value(4)
+dt = matrix.DiagonalIterator(m)
+print m
+
+for TL,value,BL in dt:
+    TL.set_to_value(2)
+    value = 1
+    BL.zero()
+
+    dt.merge(TL, value,BL)
+
+
+print m
+
+

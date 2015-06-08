@@ -12,7 +12,7 @@ class Vector (object):
         
         :values: list[float], the values to initialize the vector with 
         """ 
-        self.values = values
+        self.values = list(values)
 
     @classmethod
     def copy(cls, v):
@@ -38,6 +38,9 @@ class Vector (object):
         """
 
         return self.values[index]
+    def __setitem__(self, index, value):
+        self.values[index] = value
+
 
     def size(self):
         """
@@ -85,6 +88,14 @@ class Vector (object):
         :return: Vector instance
         """ 
         return Vector([ x * scal for x in self.values])
+    def zero(self):
+
+        self.set_to_value(0)
+
+    def set_to_value(self,value):
+
+        self.values = [ value for v in self.values ] 
+
 
 class Bucket(object):
     FLA_BOTTOM = 0
