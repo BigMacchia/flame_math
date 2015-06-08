@@ -147,10 +147,11 @@ def compose(top_vector, value, bottom_vector, bucket =FLA_TOP):
         raise InputValueError("bucket argument is not a valid one")
     
     if bucket == Bucket.FLA_TOP:
-
-        return Vector(top_vector[:] +[value]), bottom_vector
+        top_vector.values.append(value)
+        return top_vector, bottom_vector
     else:
-        return top_vector, Vector(bottom_vector[:] +[value])
+        bottom_vector.values.append(value)
+        return top_vector, bottom_vector
 
 def dot_product(x,y):
 
