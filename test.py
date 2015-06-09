@@ -58,21 +58,14 @@ it = matrix.ColumnIterator(m)
 
 for i,c in enumerate(it):
     c[i] = 1
-    it.merge(i,c)
+    it.merge(c)
 
 print m
 
 m.reset_to_value(4)
 dt = matrix.DiagonalIterator(m)
 print m
-
-for TL,value,BL in dt:
-    TL.set_to_value(2)
-    value = 1
-    BL.zero()
-
-    dt.merge(TL, value,BL)
-
+m.identity()
 
 print m
 
